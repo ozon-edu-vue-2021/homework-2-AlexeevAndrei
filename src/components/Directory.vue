@@ -5,11 +5,11 @@
         {{ items.name }}
         <span>[{{ isOpen ? '-' : '+' }}]</span>
       </div>
-      <ol v-show="isOpen">
+      <ol v-if="isOpen">
         <File
           :item="item"
-          v-for="(item, index) in items.contents"
-          :key="index"
+          v-for="item in items.contents"
+          :key="item.name"
         ></File>
       </ol>
     </li>

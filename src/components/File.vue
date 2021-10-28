@@ -2,16 +2,17 @@
   <li :class="[{ active: isActive }, item]" @click="focusElement">
     <div :class="{ bold: isFolder }" @click="toggle">
       {{ item.name }}
-      <span v-show="isFolder">[{{ isOpen ? '-' : '+' }}]</span>
+      <span v-if="isFolder">[{{ isOpen ? '-' : '+' }}]</span>
     </div>
-
-    <ol v-if="item.contents && item.contents.length" v-show="isOpen">
-      <File
-        v-for="(child, index) in item.contents"
-        :item="child"
-        :key="index"
-      ></File>
-    </ol>
+    <template v-if="isOpen">
+      <ol v-if="item.contents && item.contents.length">
+        <File
+          v-for="child in item.contents"
+          :item="child"
+          :key="child.name"
+        ></File>
+      </ol>
+    </template>
   </li>
 </template>
 
