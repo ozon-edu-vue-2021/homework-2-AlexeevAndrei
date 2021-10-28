@@ -1,6 +1,6 @@
 <template>
   <li :class="[{ active: isActive }, item]" @click="focusElement">
-    <div :class="{ bold: isFolder }" @click="toggle">
+    <div :class="{ bold: isFolder, link: isLink }" @click="toggle">
       {{ item.name }}
       <span v-if="isFolder">[{{ isOpen ? '-' : '+' }}]</span>
     </div>
@@ -35,6 +35,9 @@ export default {
     isFolder: function() {
       return this.item.contents && this.item.contents.length;
     },
+    isLink: function() {
+      return this.item.type === 'link';
+    },
   },
   methods: {
     toggle: function() {
@@ -54,5 +57,9 @@ export default {
 <style scoped>
 .active {
   background-color: lightgray;
+}
+
+.link {
+  color: red;
 }
 </style>
