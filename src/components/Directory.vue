@@ -21,22 +21,24 @@ import File from './File.vue';
 
 export default {
   name: 'Directory',
+
   components: {
     File,
   },
+
   props: {
     items: {
       type: Object,
       required: true,
     },
   },
-  data: function() {
-    return {
-      isOpen: false,
-    };
-  },
+
+  data: () => ({
+    isOpen: false,
+  }),
+
   methods: {
-    toggle: function() {
+    toggle() {
       this.isOpen = !this.isOpen;
     },
   },

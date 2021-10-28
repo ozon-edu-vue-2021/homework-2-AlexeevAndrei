@@ -9,9 +9,11 @@ import Directory from './components/Directory.vue';
 
 export default {
   name: 'App',
+
   components: {
     Directory,
   },
+
   data: () => ({
     tree: {},
   }),
@@ -19,6 +21,7 @@ export default {
   mounted() {
     this.load();
   },
+
   methods: {
     async load() {
       const res = await fetch('./static/node_modules.json');

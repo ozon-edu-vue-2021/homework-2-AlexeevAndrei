@@ -19,32 +19,35 @@
 <script>
 export default {
   name: 'File',
+
   props: {
     item: {
       type: Object,
       required: true,
     },
   },
-  data: function() {
-    return {
-      isOpen: false,
-      isActive: false,
-    };
-  },
+
+  data: () => ({
+    isOpen: false,
+    isActive: false,
+  }),
+
   computed: {
-    isFolder: function() {
+    isFolder() {
       return this.item.contents && this.item.contents.length;
     },
-    isLink: function() {
+    isLink() {
       return this.item.type === 'link';
     },
   },
+
   methods: {
-    toggle: function() {
+    toggle() {
       if (this.isFolder) {
         this.isOpen = !this.isOpen;
       }
     },
+
     focusElement() {
       if (!this.isFolder) {
         this.isActive = !this.isActive;
